@@ -210,81 +210,7 @@ namespace SoundtrackEditor
 
             playlists.Add(new Playlist
             {
-                name = "Construction",
-                loop = true,
-                shuffle = true,
-                preloadTime = 5,
-                tracks = new List<string> {
-                    "KSP_Construction01",
-                    "KSP_Construction02",
-                    "KSP_Construction03",
-                    "Groove Grove",
-                    "Brittle Rille"
-                },
-                playWhen = new Playlist.Prerequisites
-                {
-                    scene = Enums.Scenes.VAB | Enums.Scenes.SPH
-                }
-            });
-
-            playlists.Add(new Playlist
-            {
-                name = "Space",
-                loop = true,
-                shuffle = true,
-                preloadTime = 5,
-                tracks = new List<string> {
-                    "KSP_SpaceAmbience01",
-                    "KSP_SpaceAmbience02",
-                    "KSP_SpaceAmbience03",
-                    "KSP_SpaceAmbience04",
-                    "Arcadia",
-                    "Bathed in the Light",
-                    "Dreamy Flashback",
-                    "Frost Waltz",
-                    "Frost Waltz (Alternate)",
-                    "Frozen Star",
-                    "Impact Lento",
-                    "Wizardtorium",
-                    "KSP_MainTheme",
-                },
-                playWhen = new Playlist.Prerequisites
-                {
-                    scene = Enums.Scenes.Flight,
-                    inAtmosphere = Enums.Selector.False
-                }
-            });
-
-            playlists.Add(new Playlist
-            {
-                name = "Astronaut Complex",
-                loop = true,
-                tracks = new List<string> {
-                    "KSP_AstronautComplexAmbience"
-                },
-                playWhen = new Playlist.Prerequisites
-                {
-                    //scene = Enums.Scene.AstronautComplex TODO
-                    scene = Enums.Scenes.PSystem
-                }
-            });
-
-            playlists.Add(new Playlist
-            {
-                name = "Credits",
-                loop = true,
-                tracks = new List<string> {
-                    "KSP_Credits"
-                },
-                playWhen = new Playlist.Prerequisites
-                {
-                    scene = Enums.Scenes.Credits
-                }
-            });
-
-            playlists.Add(new Playlist
-            {
-                name = "Menu ambience",
+                name = "Main Menu ambience",
                 loop = true,
                 preloadTime = 5,
                 enabled = false,
@@ -293,79 +219,106 @@ namespace SoundtrackEditor
                 },
                 playWhen = new Playlist.Prerequisites
                 {
-                    scene = Enums.Scenes.MainMenu
+					scene = Enums.Scenes.MainMenu | Enums.Scenes.Settings
                 }
             });
 
-            Playlist spaceCentreAmbience = new Playlist
+			playlists.Add(new Playlist
+			{
+				name = "Main Menu theme",
+				loop = false,
+				preloadTime = 5,
+				disableAfterPlay = true,
+				playNext = "Main Menu ambience",
+				tracks = new List<string> {
+					"KSP_MainTheme"
+				},
+				playWhen = new Playlist.Prerequisites
+				{
+					scene = Enums.Scenes.MainMenu | Enums.Scenes.Settings
+				}
+			});
+
+			playlists.Add(new Playlist
+			{
+				name = "Credits",
+				loop = false,
+				preloadTime = 5,
+				tracks = new List<string> {
+					"KSP_Credits"
+				},
+				playWhen = new Playlist.Prerequisites
+				{
+					scene = Enums.Scenes.Credits
+				}
+			});
+
+			playlists.Add(new Playlist
             {
-                name = "Space centre",
+				name = "Space Center ambience (day)",
                 loop = true,
                 preloadTime = 5,
                 tracks = new List<string> {
-                    "KSP_SpaceCenterAmbience"
+                    "KSP_SpaceCenterAmbienceDay"
                 },
                 playWhen = new Playlist.Prerequisites
                 {
+					timeOfDay = Enums.TimesOfDay.TwilightAM | Enums.TimesOfDay.DayAM | Enums.TimesOfDay.DayPM,
                     scene = Enums.Scenes.SpaceCentre
                 }
-            };
-            playlists.Add(spaceCentreAmbience);
+			});
 
-            playlists.Add(new Playlist
-            {
-                name = "Menu theme",
-                loop = false,
-                preloadTime = 5,
-                disableAfterPlay = true,
-                playNext = "Menu ambience",
-                tracks = new List<string> {
-                    "KSP_MainTheme"
-                },
-                playWhen = new Playlist.Prerequisites
-                {
-                    scene = Enums.Scenes.MainMenu
-                }
-            });
-
-            playlists.Add(new Playlist
-            {
-                name = "Mission control ambience",
-                loop = true,
-                tracks = new List<string> {
-                    "KSP_MissionControlAmbience" // TODO - Verify this
-                },
-                playWhen = new Playlist.Prerequisites
-                {
-                    // scene = Enums.Scene.MissionControl TODO
-                    scene = Enums.Scenes.Loading
-                }
-            });
-
-            playlists.Add(new Playlist
-            {
-                name = "Research complex ambience",
-                loop = true,
-                tracks = new List<string> {
-                    "KSP_ResearchAndDevelopment" // TODO - Verify this
-                },
-                playWhen = new Playlist.Prerequisites
-                {
-                    //scene = Enums.Scene.ResearchComplex TODO
-                    scene = Enums.Scenes.LoadingBuffer
-                }
-            });
-
-            playlists.Add(new Playlist
-            {
-                name = "Space center ambience",
-                loop = true,
-                tracks = new List<string> {
-                    "KSP_SpaceCenterAmbience" // TODO - Verify this
-                },
-                playWhen = new Playlist.Prerequisites
-                {
+			playlists.Add(new Playlist
+			{
+				name = "Space Center ambience (night)",
+				loop = true,
+				preloadTime = 5,
+				tracks = new List<string> {
+					"KSP_SpaceCenterAmbienceNight"
+				},
+				playWhen = new Playlist.Prerequisites
+				{
+					timeOfDay = Enums.TimesOfDay.NightAM | Enums.TimesOfDay.TwilightPM | Enums.TimesOfDay.NightPM,
                     scene = Enums.Scenes.SpaceCentre
+				}
+			});
+
+			playlists.Add(new Playlist
+				{
+					name = "Astronaut Complex",
+					loop = true,
+					tracks = new List<string> {
+						"KSP_AstronautComplexAmbience"
+					},
+					playWhen = new Playlist.Prerequisites
+					{
+						scene = Enums.Scenes.AstronautComplex
+					}
+				});
+
+            playlists.Add(new Playlist
+            {
+                name = "Mission Control",
+                loop = true,
+                tracks = new List<string> {
+                    "KSP_MissionControlMusic"
+                },
+                playWhen = new Playlist.Prerequisites
+                {
+                    scene = Enums.Scenes.MissionControl
+                }
+            });
+
+            playlists.Add(new Playlist
+            {
+                name = "Research and Development",
+                loop = true,
+                tracks = new List<string> {
+                    "KSP_ResearchAndDevelopment"
+                },
+                playWhen = new Playlist.Prerequisites
+                {
+                    scene = Enums.Scenes.RnDComplex
                 }
             });
 
@@ -373,6 +326,7 @@ namespace SoundtrackEditor
             {
                 name = "SPH ambience",
                 loop = true,
+				enabled = false,	// TODO: add channel for actual ambience tracks like stock KSP
                 tracks = new List<string> {
                     "KSP_SPHAmbience"
                 },
@@ -384,7 +338,7 @@ namespace SoundtrackEditor
 
             playlists.Add(new Playlist
             {
-                name = "Tracking station ambience",
+                name = "Tracking Station",
                 loop = true,
                 tracks = new List<string> {
                     "KSP_TrackingStation"
@@ -399,6 +353,7 @@ namespace SoundtrackEditor
             {
                 name = "VAB ambience",
                 loop = true,
+				enabled = false,	// TODO: add channel for actual ambience tracks like stock KSP
                 tracks = new List<string> {
                     "KSP_VABAmbience"
                 },
@@ -407,6 +362,52 @@ namespace SoundtrackEditor
                     scene = Enums.Scenes.VAB
                 }
             });
+
+			playlists.Add(new Playlist
+			{
+				name = "Construction",
+				loop = true,
+				shuffle = true,
+				preloadTime = 5,
+				tracks = new List<string> {
+					"KSP_Construction01",
+					"KSP_Construction02",
+					"KSP_Construction03",
+					"Groove Grove",
+					"Brittle Rille"
+				},
+				playWhen = new Playlist.Prerequisites
+				{
+					scene = Enums.Scenes.VAB | Enums.Scenes.SPH
+				}
+			});
+
+			playlists.Add(new Playlist
+			{
+				name = "Space",
+				loop = true,
+				shuffle = true,
+				preloadTime = 5,
+				tracks = new List<string> {
+					"KSP_SpaceAmbience01",
+					"KSP_SpaceAmbience02",
+					"KSP_SpaceAmbience03",
+					"KSP_SpaceAmbience04",
+					"Arcadia",
+					"Bathed in the Light",
+					"Dreamy Flashback",
+					"Frost Waltz",
+					"Frost Waltz (Alternate)",
+					"Frozen Star",
+					"Impact Lento",
+					"Wizardtorium",
+				},
+				playWhen = new Playlist.Prerequisites
+				{
+					scene = Enums.Scenes.Flight,
+					inAtmosphere = Enums.Selector.False
+				}
+			});
 
             return playlists;
         }
