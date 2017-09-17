@@ -833,7 +833,7 @@ NullReferenceException: Object reference not set to an instance of an object
                 _situationExpanded = false;
                 _timeOfDayExpanded = false;
                 _inAtmosphereExpanded = false;
-                _fadeEditorVisible = false;
+                //_fadeEditorVisible = false; // TODO
                 _trackPickerVisible = false;
                 _playNextPickerVisible = false;
                 _playBeforePickerVisible = false;
@@ -1090,6 +1090,8 @@ NullReferenceException: Object reference not set to an instance of an object
         }
 
 
+		//TODO: finish implementing fade
+		/*
         private bool _fadeEditorVisible = false;
         private bool _crossfade = false;
         private float _fadeIn = 0;
@@ -1139,6 +1141,7 @@ NullReferenceException: Object reference not set to an instance of an object
                 GUILayout.EndHorizontal();
             }
         }
+		*/
 
         private bool _trackPickerVisible = false;
         private void TrackPicker()

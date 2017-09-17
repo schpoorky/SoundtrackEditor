@@ -31,8 +31,8 @@ namespace SoundtrackEditor
 
         public List<string> tracks = new List<string>(); // TODO: Full path? Duplicates!
         public int channel = 0; // TODO
-        public Fade fade = new Fade();
-        public Fade trackFade = new Fade();
+		/*public Fade fade = new Fade(); // TODO: finish implementing fade
+		public Fade trackFade = new Fade();*/
         public float preloadTime = 5;
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // TODO: Make sure any new fields are added to Equals, the CTOR and the persistor.
@@ -65,8 +65,8 @@ namespace SoundtrackEditor
             playAfter = p.playAfter;
             tracks = new List<string>(p.tracks);
             channel = p.channel;
-            fade = new Fade(p.fade);
-            trackFade = new Fade(p.trackFade);
+            /*fade = new Fade(p.fade); // TODO: finish implementing fade
+            trackFade = new Fade(p.trackFade);*/
             preloadTime = p.preloadTime;
         }
 
@@ -118,6 +118,8 @@ namespace SoundtrackEditor
             tracks = shuffledTracks;
         }
 
+		// TODO: finish implementing fade
+		/*
         public class Fade
         {
             public float fadeIn = 0;
@@ -174,6 +176,7 @@ namespace SoundtrackEditor
             }
             #endregion Equality Operator
         }
+		*/
 
         public class Prerequisites
         {
@@ -550,8 +553,8 @@ namespace SoundtrackEditor
                     (this.name.Equals(p.name)) &&
                     (this.tracks.SequenceEqual(p.tracks)) &&
                     (this.playWhen.Equals(p.playWhen)) &&
-                    (this.fade == p.fade) &&
-                    (this.trackFade == p.trackFade) &&
+                    /*(this.fade == p.fade) && // TODO: finish implementing fade
+                    (this.trackFade == p.trackFade) &&*/
                     (this.preloadTime == p.preloadTime);
         }
 
@@ -573,8 +576,8 @@ namespace SoundtrackEditor
                     (this.playAfter == p.playAfter) &&
                     (this.tracks.SequenceEqual(p.tracks)) &&
                     (this.playWhen.Equals(p.playWhen)) &&
-                    (this.fade == p.fade) &&
-                    (this.trackFade == p.trackFade) &&
+                    /*(this.fade == p.fade) && // TODO: finish implementing fade
+                    (this.trackFade == p.trackFade) &&*/
                     (this.preloadTime == p.preloadTime);
         }
 
@@ -594,8 +597,8 @@ namespace SoundtrackEditor
                 J = name,
                 K = tracks,
                 L = playWhen,
-                M = fade,
-                N = trackFade,
+                /*M = fade, // TODO: finish implementing fade
+                N = trackFade,*/
                 O = preloadTime
             }.GetHashCode();
         }
