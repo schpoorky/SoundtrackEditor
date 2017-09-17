@@ -52,7 +52,7 @@ namespace SoundtrackEditor
         public AudioClip PreloadClip;
         public static bool InitialLoadingComplete = false; // Whether we have reached the main menu yet during this session.
         private System.Timers.Timer preloadTimer = new System.Timers.Timer();
-        private Fader fader;
+        //private Fader fader; //TODO
         //private EventManager _eventManager = new EventManager();
 
         public static SoundtrackEditor Instance { get; private set; }
@@ -92,7 +92,7 @@ namespace SoundtrackEditor
             Speaker.dopplerLevel = 0;
             Speaker.loop = false;
             Speaker.volume = GameSettings.MUSIC_VOLUME;
-            fader = new Fader(Speaker);
+            //fader = new Fader(Speaker); //TODO
 
             // TODO: Change volume on unpause or main menu.
 
@@ -229,7 +229,7 @@ namespace SoundtrackEditor
                 PlayClip(LoadingClip);
 
             UpdateCurrentTrack();
-            fader.Fade();
+            //fader.Fade();
         }
 
         public void OnSituationChanged()
@@ -513,6 +513,7 @@ namespace SoundtrackEditor
             Speaker.clip = clip;
             Speaker.time = 0;
 
+			/* //TODO: finish implementing fade
             if (CurrentPlaylist.fade.fadeIn > 0)
                 fader.BeginPlaylistFadeIn(CurrentPlaylist);
             else if (CurrentPlaylist.trackFade.fadeIn > 0) // Playlist fade has precedence over track fade.
@@ -522,6 +523,7 @@ namespace SoundtrackEditor
                 fader.BeginPlaylistFadeOut(CurrentPlaylist);
             else if (CurrentPlaylist.trackFade.fadeOut > 0)
                 fader.BeginTrackFadeOut(CurrentPlaylist);
+			*/
 
             if (CurrentPlaylist.preloadTime > 0)
             {
@@ -541,7 +543,7 @@ namespace SoundtrackEditor
         public void StopPlayback()
         {
             Speaker.Stop();
-            fader.PlaybackStopped();
+            //fader.PlaybackStopped();
             PlaybackPaused = false;
         }
 

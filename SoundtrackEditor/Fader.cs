@@ -1,4 +1,6 @@
-﻿using System;
+﻿// TODO: finish implementing fade
+/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -133,11 +135,11 @@ namespace SoundtrackEditor
                 _wasFadingIn = false;
 
 
-            /*/ TODO: Preload
+            /* // TODO: Preload
             if (CurrentPlaylist != null)
             {
                 float preloadTime = CurrentPlaylist.preloadTime + CurrentPlaylist.trackFade.fadeOut;
-            }*/
+            }* /
         }
 
         public void PlaybackStopped()
@@ -146,3 +148,4 @@ namespace SoundtrackEditor
         }
     }
 }
+*/
